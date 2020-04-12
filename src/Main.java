@@ -14,9 +14,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File file = new File("address.txt");
+		File file = new File("addresses.txt");
 		FileInput data = new FileInput(file);
-
 	}
 
 }
