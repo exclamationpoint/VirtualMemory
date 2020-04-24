@@ -11,14 +11,6 @@ public class TLB {
 	int[] pageNumber;
 	int[] frameNumber;
 	int[] entryAge;
-	static int FRAME_SIZE = 256;
-	static int TOTAL_FRAME_COUNT = 256;
-	static String PAGE_MASK = "0xFF00";
-	static String OFFSET_MASK = " 0xFF";
-	static int SHIFT = 8;
-	static int TLB_SIZE = 16;
-	static int PAGE_TABLE_SIZE = 256;
-	static int PAGE_READ_SIZE = 256;
 
 	public TLB() {
 		memory = new Hashtable<>();
