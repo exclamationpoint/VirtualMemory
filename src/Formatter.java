@@ -4,17 +4,12 @@
  */
 public class Formatter {
 	String data;
-	static int FRAME_SIZE = 256;
-	static int TOTAL_FRAME_COUNT = 256;
-	static String PAGE_MASK = "0xFF00";
-	static String OFFSET_MASK = " 0xFF";
-	static int SHIFT = 8;
-	static int TLB_SIZE = 16;
-	static int PAGE_TABLE_SIZE = 256;
-	static int PAGE_READ_SIZE = 256;
 
 	public Formatter(String data) {
 		this.data = data;
+	}
+
+	public String logicalAddrToPageAddr(int addr) {
 	}
 
 	public String toMemAddress() {
