@@ -2,7 +2,7 @@
  * @author Owner
  *
  */
-public class Formatter {
+public class MemoryTranslation {
 
 	public static int logicalAddrToMemAddr(int addr) {
 		return addr & 0xFFFF;

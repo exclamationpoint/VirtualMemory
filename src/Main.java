@@ -1,10 +1,6 @@
 import java.io.File;
 
 /**
- *
- */
-
-/**
  * @author Owner
  *
  */
@@ -19,7 +15,7 @@ public class Main {
 		FileInput data = new FileInput(file);
 		RAM memory = new RAM();
 
-		for (int i = 0; i < memory.PAGE_SIZE; i++) {
+		for (int i = 0; i < 256; i++) {
 			System.out.println(memory.getEntry(i));
 		}
 
