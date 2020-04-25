@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * 
+ *
  */
 
 /**
@@ -21,13 +21,14 @@ public class FileInput {
 	public FileInput(File data) {
 		try {
 			InputStream is = new FileInputStream(data);
-			bis = new BufferedReader(new InputStreamReader(is), 256 * 256);
+			bis = new BufferedReader(new InputStreamReader(is));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
+
 	public String getNext() {
 		try {
 			return bis.readLine();

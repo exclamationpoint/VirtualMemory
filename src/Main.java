@@ -19,6 +19,10 @@ public class Main {
 		FileInput data = new FileInput(file);
 		RAM memory = new RAM();
 
+		for (int i = 0; i < memory.PAGE_SIZE; i++) {
+			System.out.println(memory.getEntry(i));
+		}
+
 	}
 
 }
