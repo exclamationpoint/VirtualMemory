@@ -2,3 +2,6 @@
 /RAM.class
 /MMU.class
 /MemoryTranslation.class
+/BackingStore.class
+/PageTable.class
+/PhysicalMemory.class

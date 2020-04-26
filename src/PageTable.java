@@ -9,23 +9,36 @@ import java.io.InputStream;
  * @author Owner
  *
  */
-public class RAM {
+public class PageTable {
 	static int PAGE_SIZE = 256;
 	InputStream is;
-	int[] memory = new int[PAGE_SIZE];
 
-	public RAM() {
+	public PageTable() {
 		File data = new File("BACKING_STORE.bin");
 		try {
 			is = new BufferedInputStream(new FileInputStream(data), 32);
-			loadIntoRAM(0);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void loadIntoRAM(int page) {
+	public int[] retrievePage(int page) {
+		int[] memory = new int[256];
+		gotoPage(page);
+
+		for (int i = 0; i < PAGE_SIZE; i++) {
+			try {
+				memory[0] = is.read();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return memory;
+	}
+
+	public void gotoPage(int page) {
 		int line = page * PAGE_SIZE;
 		int counter = 0;
 		while (counter <= line) {
@@ -37,18 +50,5 @@ public class RAM {
 				e.printStackTrace();
 			}
 		}
-
-		for (int i = 0; i < PAGE_SIZE; i++) {
-			try {
-				memory[i] = is.read();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public int getEntry(int index) {
-		return memory[index];
 	}
 }
