@@ -50,23 +50,53 @@ public class MMU {
 		}
 	}
 
+	/**
+	 * Get page from the page table
+	 *
+	 * @param page number
+	 * @return The page
+	 */
 	public int[] getPage(int page) {
 		return pageTable.retrievePage(page);
 	}
 
+	/**
+	 * Load data into physical. A mediation method between main and
+	 * PhysicalMemory
+	 *
+	 * @param data
+	 */
 	public void loadPhysical(int[] data) {
 		physMem.loadIntoMemory(data);
 	}
 
+	/**
+	 * Retrieves data from physical memory
+	 *
+	 * @param address
+	 * @return Data requested
+	 */
 	public int getData(int address) {
 		return physMem.getData(address);
 	}
 
+	/**
+	 * Translates page number from logical address
+	 *
+	 * @param address
+	 * @return page number
+	 */
 	public int getPageNumber(int address) {
 		int memAddress = MemoryTranslation.logicalAddrToMemAddr(address);
 		return MemoryTranslation.memAddrToPageAddr(memAddress);
 	}
 
+	/**
+	 * Translates offset from logical address
+	 *
+	 * @param address
+	 * @return offset
+	 */
 	public int getOffset(int address) {
 		int memAddress = MemoryTranslation.logicalAddrToMemAddr(address);
 		return MemoryTranslation.memAddrToOffset(memAddress);
