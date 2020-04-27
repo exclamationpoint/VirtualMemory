@@ -24,7 +24,5 @@ public class Main {
 
 			System.out.println("Virtual Address: " + address + " Physical Address: " + offset + " Value" + data);
 		}
-
 	}
-
 }

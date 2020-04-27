@@ -16,7 +16,6 @@ public class MMU {
 		pageTable = new PageTable();
 		addresses = new int[1000];
 		physMem = new PhysicalMemory();
-
 	}
 
 	/**
@@ -33,6 +32,9 @@ public class MMU {
 		this.pageTable = memory;
 	}
 
+	/**
+	 * Loads file from hard disk and stores the data in an array
+	 */
 	public void loadLogical() {
 		File file = new File("addresses.txt");
 		BufferedReader br;
