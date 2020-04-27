@@ -12,7 +12,12 @@ public class Main {
 
 		mmu.loadLogical(); // Reads the address.txt file
 
-		// Gets an address from the logical address list
+		/*
+		 * Iterates through the list of logical addresses then translates to the
+		 * page address and offset. Then retrieves the data from physical
+		 * memory. Except it doesn't work. I'm not getting the same values that
+		 * are in the answers.txt.
+		 */
 		for (int i = 0; i < mmu.addresses.length; i++) {
 			int address = mmu.addresses[i];
 			int pageNumber = mmu.getPageNumber(address);
