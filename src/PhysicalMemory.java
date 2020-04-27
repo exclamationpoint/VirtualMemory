@@ -17,4 +17,8 @@ public class PhysicalMemory {
 		memory = data;
 	}
 
+	public int getData(int address) {
+		return memory[address];
+	}
+
 }

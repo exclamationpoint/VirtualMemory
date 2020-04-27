@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 /**
  * @author Owner
  *
@@ -13,23 +8,22 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File file = new File("addresses.txt");
-		BufferedReader br;
+		MMU mmu = new MMU(); // New MMU object
 
-		try {
-			br = new BufferedReader(new FileReader(file));
-			System.out.println(br.read());
+		mmu.loadLogical(); // Reads the address.txt file
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Gets an address from the logical address list
+		for (int i = 0; i < mmu.addresses.length; i++) {
+			int address = mmu.addresses[i];
+			int pageNumber = mmu.getPageNumber(address);
+			int offset = mmu.getOffset(address);
+
+			int[] page = mmu.getPage(pageNumber);
+			mmu.loadPhysical(page);
+			int data = mmu.getData(offset);
+
+			System.out.println("Virtual Address: " + address + " Physical Address: " + offset + " Value" + data);
 		}
-
-		MMU mmu = new MMU();
-
-		mmu.loadLogical();
-		int[] address = mmu.getAddresses();
-		System.out.println(address[0]);
 
 	}
 

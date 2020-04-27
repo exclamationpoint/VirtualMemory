@@ -8,12 +8,14 @@ import java.io.IOException;
  *
  */
 public class MMU {
-	PageTable memory;
+	PageTable pageTable;
+	PhysicalMemory physMem;
 	int[] addresses;
 
 	public MMU() {
-		memory = new PageTable();
-		addresses = new int[65536];
+		pageTable = new PageTable();
+		addresses = new int[1000];
+		physMem = new PhysicalMemory();
 
 	}
 
@@ -21,21 +23,14 @@ public class MMU {
 	 * @return the memory
 	 */
 	public PageTable getMemory() {
-		return memory;
+		return pageTable;
 	}
 
 	/**
 	 * @param memory the memory to set
 	 */
 	public void setMemory(PageTable memory) {
-		this.memory = memory;
-	}
-
-	/**
-	 * @return the addresses
-	 */
-	public int[] getAddresses() {
-		return addresses;
+		this.pageTable = memory;
 	}
 
 	public void loadLogical() {
@@ -44,8 +39,9 @@ public class MMU {
 
 		try {
 			br = new BufferedReader(new FileReader(file));
-			for (int i = 0; i < addresses.length; i++) {
-				addresses[i] = br.read();
+			for (int i = 0; i < (addresses.length); i++) {
+				int temp = Integer.parseInt(br.readLine());
+				addresses[i] = temp;
 			}
 
 		} catch (IOException e) {
@@ -54,7 +50,19 @@ public class MMU {
 		}
 	}
 
-	public int getReleventPageNumber(int address) {
+	public int[] getPage(int page) {
+		return pageTable.retrievePage(page);
+	}
+
+	public void loadPhysical(int[] data) {
+		physMem.loadIntoMemory(data);
+	}
+
+	public int getData(int address) {
+		return physMem.getData(address);
+	}
+
+	public int getPageNumber(int address) {
 		int memAddress = MemoryTranslation.logicalAddrToMemAddr(address);
 		return MemoryTranslation.memAddrToPageAddr(memAddress);
 	}
